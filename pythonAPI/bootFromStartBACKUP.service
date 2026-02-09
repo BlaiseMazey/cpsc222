@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask API in java
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/home/user
+ExecStart=/usr/bin/python3 /home/user/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
