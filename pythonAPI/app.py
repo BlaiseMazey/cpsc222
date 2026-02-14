@@ -1,15 +1,23 @@
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+secureApp = Flask(__name__)
 def passwordAndUserCheck():
 	username = request.form.get("username")
 	password = request.form.get("password")
 	return username == "test" and password == "abcABC123"
 
-@app.route('/')
+@secureApp.route('/')
 def hello_world():
-	return jsonify(message="Hello, World, add /users to the ip to see the users on the device ")
+	return "Hello, World"
 
+# @app.before_request
+# def before_request():
+#	testString = 'https://'
+#	if not request.is_secure:
+#		url = request.url.replace('http://',testString,1)
+#		code = 307
+#		return redirect(url, code=code) #credit to hartly brody on stack overflow from 2021, lets see if it works
 
 #makes a list var of users, opens the path that contains the users, then parses through the lines. it splits it on colons. it takes the slpit lines and loads them into users. when its done it closes the file and reurns the list. you can choose the raw data option in the web browser to see the right thing 
 def get_users():
@@ -52,7 +60,11 @@ def print_groups():
 	return jsonify(get_groups())
 
 #stored data, may not be usefull but was in tut
-items = [{"id":  1, "name": "This is Item one" }, {"id": 2, "name": "This is Item two"} ]
+# items = [{"id":  1, "name": "This is Item one" }, {"id": 2, "name": "This is Item two"} ]
 
 if __name__ == "__main__":
+	secureApp.run(host="0.0.0.0" , port=3000, ssl_context=('cert.pem','key.pem') )
 	app.run(host="0.0.0.0", port=3000)
+#	app.run(hosts="0.0.0.0", port=3000 )
+#	app.run(host="0.0.0.0" , port=3000,ssl_context=('cert.pem','key.pem'))
+
