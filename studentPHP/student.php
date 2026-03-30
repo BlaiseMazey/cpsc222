@@ -1,7 +1,7 @@
 <?php
 	class Student
 		{
-		private $fName ="", $lName="", $SID="",$classes= array();
+		private $fName ="", $lName="", $SID=0,$classes= array();
 
 function __construct($f, $l, $s, $c)
 	{
