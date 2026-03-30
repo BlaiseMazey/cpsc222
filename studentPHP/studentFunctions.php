@@ -15,25 +15,25 @@ require_once "student.php";
 	}
 function printGrades(Student $student )
 	{
-	$classes = $student->getclasses();
+	$classes = $student->getClasses();
 	$numericalGrade=0;
 	$letterGrade="";
-	$display ="<table border=1>" ."<tr>"."<td>".Grades . "</td>"."<td>"."<ul>" ; //does not close the table out here
-	foreach ($classes as $classes=> $numericalGrade )
+	$display ="<table border=1>" ."<tr>"."<td>Grades</td>"."<td>"."<ul>" ; //does not close the table out here
+	foreach ($classes as $class=> $numericalGrade )
 	{
 	$letterGrade = getLetterGrade($numericalGrade);
-	$display .= "<li>".$classes ." " .$numericalGrade. " " . $letterGrade. "</li>";
+	$display .= "<li>".$class ." " .$numericalGrade. " " . $letterGrade. "</li>";
 	}
 	$display .="</ul>" . "</td>" . "</tr>"."</table>" ; //closes the table must always be last
 	return $display;
 	} //end print grades
-function printStudent(student $student)
+function printStudent(Student $student)
 	{
-	$name = printName($student)
+	$name = printName($student);
 	$display = "";
-	$display =  "<table border =1>". " <tr>". "<td>" .Name. "</td>" ;
-	$display .= "<td>".$name. "</td>";
-	$display.=  "</tr>" ."<td>".student ID."</td>". "<td>".$student->getSID()."</td>". "</tr>" ;
+	$display =  "<table border =1>". " <tr>". "<td> Name </td>" ;
+	$display .= "<td>".$name. "</td></tr>";
+	$display.=  "<tr>" ."<td>student ID</td>". "<td>".$student->getSID()."</td>". "</tr>" ;
 	$display .= "</table>";
 	$display .= printGrades($student);
 	echo $display;
