@@ -1,5 +1,5 @@
 <?php
-$months = array("January" , "Feburary", "March", "April", "May","June","July","August","September", "October", "Nove>
+$months = array("January" , "Feburary", "March", "April", "May","June","July","August","September", "October", "November", "December");
 $month= $_POST['month'] ;
 $day= $_POST['day'] ;
 $year = $_POST['year'];
