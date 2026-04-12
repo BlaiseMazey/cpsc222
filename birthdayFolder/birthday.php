@@ -1,7 +1,7 @@
 <?php
 require_once "birthdayfunctions.php";
 
-$months = array("January" =>1, "Feburary"=>2, "March"=>3, "April"=>4, "May"=>5,"June"=>6,"July"=>7,"August"=>8,"September"=>9, "October"=>10, "November"=>11,"December"=>12);
+$months = array("January" =>1, "Februrary"=>2, "March"=>3, "April"=>4, "May"=>5,"June"=>6,"July"=>7,"August"=>8,"September"=>9, "October"=>10, "November"=>11,"December"=>12);
 $buttonPressed = ($_SERVER['REQUEST_METHOD'] === 'POST'); 
 if($buttonPressed == true)
 {
