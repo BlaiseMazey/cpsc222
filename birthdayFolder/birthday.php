@@ -1,14 +1,17 @@
 <?php
 require_once "birthdayfunctions.php";
 
-$months = array("January" ->1, "Feburary"->2, "March"->3, "April"->4, "May"->5,"June"->6,"July"->7,"August"->8,"September"->9, "October"->10, "November"->11,"December"->12);
+$months = array("January" =>1, "Feburary"=>2, "March"=>3, "April"=>4, "May"=>5,"June"=>6,"July"=>7,"August"=>8,"September"=>9, "October"=>10, "November"=>11,"December"=>12);
+$buttonPressed = ($_SERVER['REQUEST_METHOD' === 'POST'); 
+if($buttonPressed == true)
+{
 $month= $_POST['month'] ;
 $day= $_POST['day'] ;
 $year = $_POST['year'];
 $hour = $_POST['hour'];
 $minute = $_POST['min'];
 $dayOrNight = $_POST['ampm'];
-$buttonPressed = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang=en>
@@ -39,8 +42,10 @@ $buttonPressed = false;
 <select name ="month">
 <?php
 
-for($lcv=0;$lcv<count($months); $lcv++ )
-echo "<option value = ".$months[$lcv]."> ".$months[$lcv] ."</option> ";
+foreach($months as $name => $num)
+	{
+echo "<option value = ".$num."> ".$name ."</option> ";
+	}
 ?>
 </select>
 
@@ -48,7 +53,7 @@ echo "<option value = ".$months[$lcv]."> ".$months[$lcv] ."</option> ";
 <?php
 echo "<th> ";
 echo "<select name= \"day\" > ";
-for($lcv=1;$lcv<31; $lcv++ )
+for($lcv=1;$lcv<=31; $lcv++ )
 echo "<option value = ".$lcv."> ".$lcv ."</option> ";
 
 echo"</select> ";
@@ -58,7 +63,7 @@ echo "</th>";
 //year
 echo "<th> ";
 echo "<select name= \"year\" > ";
-for($lcv=2026;$lcv>1901; $lcv-- )
+for($lcv=2026;$lcv>=1901; $lcv-- )
 echo "<option value = ".$lcv."> ".$lcv ."</option> ";
 
 echo"</select> ";
@@ -68,7 +73,7 @@ echo "</th>";
 //hour
 echo "<th> ";
 echo "<select name= \"hour\" > ";
-for($lcv=0;$lcv<=11; $lcv++ )
+for($lcv=1;$lcv<=12; $lcv++ )
 echo "<option value = ".$lcv."> ".$lcv ."</option> ";
 
 echo"</select> ";
@@ -99,20 +104,20 @@ echo "</th>";
 <br/>
 
 <br/>
-	<input type ="submit" name="submit" value ="Click Here"/input>
+	<input type ="submit" name="submit" value ="Click Here">
 </form>
 <?php } //should close out the thing
 	else
 	{	
-	$monthNumber = $month->$months;
-	echo "<h3>".printBirthdayNicely($hour, $min, $second, $monthNumber,$day,$year,$dayOrNight)."<h3>";
+	
+	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."<h3>";
 	}?> 
 <?php
 //echo "<a href = \"birthday.php? " concat all variables we took in to do thit then do \"">ClickHere" /</a>;
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'=="POST" ]) 
+if($_SERVER['REQUEST_METHOD']=="POST" ) 
 {
 echo "<h2>this works now </h2>";
 //echo "work plz ". $month." ".$day." ".$year. " ".$hour." ".$minute." ".$dayOrNight;
