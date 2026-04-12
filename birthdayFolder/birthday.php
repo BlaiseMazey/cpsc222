@@ -110,10 +110,11 @@ echo "</th>";
 	else
 	{	
 	
-	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."<h3>";
+	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."<h3>";
+	// echo <a href = \"birthday.php? " concat all variables we took in to do thit then do \"">ClickHere" /</a>; currently this breaks it
 	}?> 
 <?php
-//echo "<a href = \"birthday.php? " concat all variables we took in to do thit then do \"">ClickHere" /</a>;
+//echo "
 ?>
 
 <?php
