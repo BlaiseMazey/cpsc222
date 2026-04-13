@@ -13,7 +13,7 @@ function printBirthdayNicely($hour, $min, $month,$day,$year,$ampm)
 $hour = convertHour($hour,$ampm);
 	return  date("l F jS, y - g:ia",mktime($hour,$min,0,$month,$day,$year)). "\n";
 	} //should work properly
-	function printBirthdayISO($hour, $min, 0, $month,$day,$year,$ampm)
+	function printBirthdayISO($hour, $min, $month,$day,$year,$ampm)
 		{
 		$hour = convertHour($hour,$ampm);
 	return  date("c",mktime($hour,$min,0,$month,$day,$year)). "\n";
