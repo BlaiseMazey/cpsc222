@@ -120,7 +120,7 @@ echo "</th>";
 	elseif($buttonPressed == true)
 	{	
 	
-	echo "<h3>".printBirthdayNicely(preg_replace($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
+	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
 	
 		echo "<a href='birthday.php?month=$month&day=$day&year=$year&hour=$hour&min=$minute&ampm=$dayOrNight'>"."show ISO Date"."</a>"; // i should match variable names, works currently
 $buttonPressed = false;
