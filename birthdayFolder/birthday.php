@@ -3,7 +3,7 @@ require_once "birthdayfunctions.php";
 
 $months = array("January" =>1, "Februrary"=>2, "March"=>3, "April"=>4, "May"=>5,"June"=>6,"July"=>7,"August"=>8,"September"=>9, "October"=>10, "November"=>11,"December"=>12);
 $buttonPressed = ($_SERVER['REQUEST_METHOD'] === 'POST'); 
-$linkedClicked = ($_SERVER['REQUEST_METHOD'] === 'GET');
+$linkedClicked = isset($_GET['month']);
 if($buttonPressed == true)
 {
 $month= $_POST['month'] ;
@@ -121,6 +121,7 @@ echo "</th>";
 	{	
 	
 	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
+	
 		echo "<a href='birthday.php?month=$month&day=$day&year=$year&hour=$hour&min=$minute&ampm=$dayOrNight'>"."show ISO Date"."</a>"; // i should match variable names, works currently
 $buttonPressed = false;
 	}
