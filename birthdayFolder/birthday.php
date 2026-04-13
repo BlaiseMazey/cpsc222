@@ -3,6 +3,7 @@ require_once "birthdayfunctions.php";
 
 $months = array("January" =>1, "Februrary"=>2, "March"=>3, "April"=>4, "May"=>5,"June"=>6,"July"=>7,"August"=>8,"September"=>9, "October"=>10, "November"=>11,"December"=>12);
 $buttonPressed = ($_SERVER['REQUEST_METHOD'] === 'POST'); 
+$linkedClicked = ($_SERVER['REQUEST_METHOD'] === 'GET');
 if($buttonPressed == true)
 {
 $month= $_POST['month'] ;
@@ -11,6 +12,15 @@ $year = $_POST['year'];
 $hour = $_POST['hour'];
 $minute = $_POST['min'];
 $dayOrNight = $_POST['ampm'];
+}
+	if($linkedClicked == true)
+{
+$month= $_GET['month'] ;
+$day= $_GET['day'] ;
+$year = $_GET['year'];
+$hour = $_GET['hour'];
+$minute = $_GET['min'];
+$dayOrNight = $_GET['ampm'];
 }
 ?>
 <!DOCTYPE html>
@@ -106,23 +116,20 @@ echo "</th>";
 <br/>
 	<input type ="submit" name="submit" value ="Click Here">
 </form>
-<?php } //should close out the thing
-	else
+<?php } //should close out the thing rember this its cool. 
+	elseif($buttonPressed == true)
 	{	
 	
-	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."<h3>";
-	// echo <a href = \"birthday.php? " concat all variables we took in to do thit then do \"">ClickHere" /</a>; currently this breaks it
-	}?> 
-<?php
-//echo "
-?>
+	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
+		echo "<a href='birthday.php?month=$month&day=$day&year=$year&hour=$hour&min=$minute&ampm=$dayOrNight'>"."show ISO Date"."</a>"; // i should match variable names, works currently
+$buttonPressed = false;
+	}
+	else
+	{
+		echo"<h4>".printBirthdayISO($hour, $minute, $month,$day,$year,$dayOrNight)."</h4>";
+	}
+		?> 
 
-<?php
-if($_SERVER['REQUEST_METHOD']=="POST" ) 
-{
-echo "<h2>this works now </h2>";
-//echo "work plz ". $month." ".$day." ".$year. " ".$hour." ".$minute." ".$dayOrNight;
-}
- ?>
+
 	</body>
 </html>
