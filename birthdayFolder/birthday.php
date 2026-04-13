@@ -15,12 +15,12 @@ $dayOrNight = $_POST['ampm'];
 }
 	if($linkedClicked == true)
 {
-$month= $_GET['month'] ;
-$day= $_GET['day'] ;
-$year = $_GET['year'];
-$hour = $_GET['hour'];
-$minute = $_GET['min'];
-$dayOrNight = $_GET['ampm'];
+$month= preg_replace('/[a-zA-Z]/','',$_GET['month']) ; // this is the way we did it in class so im keeping it. Would it not be more efecive to typecast this to a number
+$day= preg_replace('/[a-zA-Z]/','',$_GET['day'] );
+$year =preg_replace('/[a-zA-Z]/','', $_GET['year']);
+$hour = preg_replace('/[a-zA-Z]/','', $_GET['hour']);
+$minute = preg_replace('/[a-zA-Z]/','',$_GET['min']);
+$dayOrNight = preg_replace('^/[a-zA-Z]/','',$_GET['ampm']);
 }
 ?>
 <!DOCTYPE html>
@@ -120,7 +120,7 @@ echo "</th>";
 	elseif($buttonPressed == true)
 	{	
 	
-	echo "<h3>".printBirthdayNicely($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
+	echo "<h3>".printBirthdayNicely(preg_replace($hour, $minute, $month,$day,$year,$dayOrNight)."\n"."</h3>";
 	
 		echo "<a href='birthday.php?month=$month&day=$day&year=$year&hour=$hour&min=$minute&ampm=$dayOrNight'>"."show ISO Date"."</a>"; // i should match variable names, works currently
 $buttonPressed = false;
