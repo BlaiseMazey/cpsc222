@@ -33,7 +33,7 @@ $dayOrNight = $_GET['ampm'];
 </head>
 	<body>
 <h1>Birthday Formater</h1>
-<?php if($buttonPressed == false)//check this line
+<?php if($buttonPressed == false && $linkedClicked == false)//check this line
 { ?>
 <form method="post" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF']); ?>" >
 <table border=1 >
