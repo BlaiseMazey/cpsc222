@@ -4,8 +4,7 @@
 
 login();
 
-?>
-<?php
+
 function loginPage() //not ideal but allows me to put all of my html in html, use this format for all forms
 {
     
@@ -219,6 +218,13 @@ foreach ( $chunks  as $chunk)
 <a href= "final.php" title = "<=== Back to Dashboard"> <======= Back to Dashboard </a><br/> 
 <?php
     }
+    function displayHiddenPage()
+    {
+?>
+
+
+<?php
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -238,8 +244,10 @@ foreach ( $chunks  as $chunk)
             }
             else
                 {
-                    linksPage();
-                     if($_GET ["num"] == 1)
+linksPage();
+                    if (isset($_GET["num"]))
+                        {
+if($_GET ["num"] == 1)
     {
         displayUserList();
     }
@@ -251,10 +259,12 @@ foreach ( $chunks  as $chunk)
         {
             displaySysLog();// change
         }
-        else if($_GET ["num"] >=5 ||htmlspecialchars( $_GET["num"] )<=0)
+        else if($_GET ["num"] >=4 || $_GET["num"] <=0)
             {
               errorPage();
             }
+                        }
+                    
                 }
             ?>
         </body>
